@@ -141,13 +141,25 @@ def analyze_recycling(df, selected_hotel=None):
     return daily_df, overall_rate, best_day, worst_day, insights, day_rates, monthly_rates, total_food, total_waste
 
 def main():
+# At the top of your main() function, before the file uploader:
     st.title('🌍 Hotel Recycling Performance Dashboard')
-    
+
+    # Add instructions with GIF
     st.markdown("""
-    This dashboard helps you track and improve your hotel's recycling performance. 
-    Upload your waste report to see detailed analysis and recommendations.
+    ### How to Use This Dashboard
+    1. Download your waste report from the portal
+    2. Upload the CSV file below
+    3. Analyze your recycling performance
     """)
-    
+
+    # Display GIF in a smaller column
+    col1, col2, col3 = st.columns([1,2,1])
+    with col2:
+        st.image("download.gif", caption="How to download your waste report", use_column_width=True)
+
+    st.divider()  # Adds a visual separator
+
+    # Then continue with your existing file uploader
     uploaded_file = st.file_uploader("📤 Upload your waste report CSV", type="csv")
     
     if uploaded_file is not None:
